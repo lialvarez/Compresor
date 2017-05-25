@@ -71,10 +71,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <Allegro_AddonImage>true</Allegro_AddonImage>
-    <Allegro_AddonTTF>true</Allegro_AddonTTF>
-    <Allegro_LibraryType>DynamicDebug</Allegro_LibraryType>
-    <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
