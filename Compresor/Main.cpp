@@ -9,6 +9,7 @@ extern "C"
 #include "Board.h"
 #include "FileSystem.h"
 #include "Dispatcher.h"
+#include "QuadTree.h"
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_primitives.h>
@@ -103,4 +104,10 @@ int main(int argc, char *argv[])
 	} while (ev.keyboard.keycode != ALLEGRO_KEY_ENTER);
 	//Si llego aca es pq aprete enter
 	selectedImgs = tileBoard.selectedTilesFiles();	//Todos los nombres de los archivos seleccionados
+	QuadTree compress;
+	for (unsigned int i = 0; i < selectedImgs.size(); i++)
+	{
+		compress.QTCompress(selectedImgs[i], userData.threshold);
+	}
 }
+
