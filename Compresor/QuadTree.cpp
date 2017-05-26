@@ -3,14 +3,16 @@
 
 typedef enum{R,G,B,A}pixel;
 #define PIXEL_SIZE	4
+#define ALPHA		0xFF
+#define PESO_MAX	765.0
 
-void QuadTree::QTCompress(std::string fileName, unsigned int threshold)
+void QuadTree::QTCompress(std::string fileName, float threshold)
 {
-	if (threshold < 0 || threshold > 2000)
+	if (threshold < 0 || threshold > 1)
 	{
 		return;
 	}
-	this->threshold = threshold;
+	this->threshold = threshold*PESO_MAX;
 	rawData.clear();
 	error = lodepng::decode(rawData, width, height, fileName.c_str());
 	if (error)
@@ -72,6 +74,7 @@ void QuadTree::quadTree(unsigned int x0, unsigned int y0, unsigned int side)
 		compressedFile.put((char)Rmed);
 		compressedFile.put((char)Gmed);
 		compressedFile.put((char)Bmed);
+		compressedFile.put(ALPHA);
 		return;
 	}
 }

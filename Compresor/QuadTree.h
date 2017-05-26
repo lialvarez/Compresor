@@ -7,12 +7,13 @@
 class QuadTree
 {
 public:
-	void QTCompress(std::string fileName, unsigned int threshold);
+	void QTCompress(std::string fileName, float threshold);
 
 private:
 	std::ofstream compressedFile;
 	std::vector<unsigned char> rawData;
-	unsigned int error, width, height, side, threshold;
+	unsigned int error, width, height, side;
+	float  threshold;
 	void quadTree(unsigned int x0, unsigned int y0, unsigned int side);
 
 };
