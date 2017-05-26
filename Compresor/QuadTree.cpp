@@ -37,7 +37,7 @@ void QuadTree::QTCompress(std::string fileName, float threshold)
 	{
 		return;
 	}
-	rawData.push_back(pot);	//Lado de la imagen comprimida
+	rawData.push_back(pot);	//potencia del lado de la imagen comprimida
 	quadTree(0, 0, side);
 	compressedFile.close();
 	rawData.clear();
