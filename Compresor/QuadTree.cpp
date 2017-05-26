@@ -1,4 +1,5 @@
 #include "QuadTree.h"
+#include <math.h>
 #include <boost/algorithm/string/replace.hpp>
 
 typedef enum{R,G,B,A}pixel;
@@ -19,16 +20,24 @@ void QuadTree::QTCompress(std::string fileName, float threshold)
 	{
 		return;
 	}
-	if (width == height)
+	if (width != height)
 	{
-		side = width;
+		return;
 	}
+	side = height;
+	unsigned char pot = log2(side);
+	if (side % 2 != 0)	//si el lado de la imagen no es potencia de 2
+	{
+		return;
+	}
+	//verificar que side sea potencia de 2
 	boost::replace_all(fileName, ".png", ".eda");
 	compressedFile.open(fileName, std::ios_base::binary);
 	if (compressedFile.fail())
 	{
 		return;
 	}
+	rawData.push_back(pot);	//Lado de la imagen comprimida
 	quadTree(0, 0, side);
 	compressedFile.close();
 	rawData.clear();
