@@ -1,6 +1,9 @@
 #include "Board.h"
 
-Board::Board() : currentPage(1), pageNum(0) {}
+Board::Board() : currentPage(1), pageNum(0) 
+{
+	tileFont = al_load_ttf_font(FONT_PATH, FONT_SIZE, 0);
+}
 
 Board::~Board()
 {
@@ -9,7 +12,7 @@ Board::~Board()
 
 void Board::addTile(std::string fileName)
 {
-	Tile * newTile = new Tile(fileName);
+	Tile * newTile = new Tile(fileName, tileFont);
 	if (newTile->validTile())
 	{
 		tiles.push_back(*newTile);

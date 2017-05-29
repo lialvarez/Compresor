@@ -3,6 +3,8 @@
 
 #define HORIZ_MARGIN	61
 #define VERT_MARGIN		36
+#define FONT_PATH		"resources/TitilliumWeb-Regular.ttf"
+#define FONT_SIZE		20
 
 #include <string>
 #include <vector>
@@ -14,6 +16,7 @@ private:
 	std::vector<Tile> tiles;
 	unsigned int currentPage;
 	unsigned int pageNum;
+	ALLEGRO_FONT *tileFont;
 
 public:
 	Board();
